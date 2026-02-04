@@ -1,0 +1,1924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <link rel="shortcut icon" href="https://raw.githubusercontent.com/AlonsoAliaga/skin-poser/main/assets/images/logo.png" type="image/png">
+    <link rel="icon" href="https://raw.githubusercontent.com/AlonsoAliaga/skin-poser/main/assets/images/logo.png" type="image/png">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft Skin Poser | AlonsoAliaga Development</title>
+
+    
+    <meta name="theme-color" content="#9a14ff"/>
+    <meta property="og:title" content="Skin Poser Generator | AlonsoAliaga Development">
+    <meta property="og:image" content="https://raw.githubusercontent.com/AlonsoAliaga/skin-poser/main/assets/images/logo.png">
+    <meta property="og:description" content="Create custom 3D poses for your skin. Rotate arms, legs, and body freely to capture the perfect render!">
+    <meta property="description" content="Create custom 3D poses for your skin. Rotate arms, legs, and body freely to capture the perfect render!">
+    <meta property="og:url" content="https://alonsoaliaga.github.io/index.html">
+    <meta property=og:type content=website/>
+    <meta property="og:site_name" content="Skin Poser - AlonsoAliaga Development" />
+    <meta name="keywords" content="Minecraft skin poser, Minecraft rank textures,rank texture generator,Minecraft glyphs,Minecraft custom font,glyph generator,Minecraft resource pack ranks,custom rank icons,custom rank tags,Minecraft tag textures,Minecraft rank icons,glyph-based ranks,rank texture pack,Minecraft rank images,rank generator,custom rank design,Minecraft font generator,Minecraft glyph system,rank formatting,glyph font,Minecraft server customization,resourcepack rank system,Minecraft font json,Minecraft glyph json,LuckPerms ranks,MiniMessage ranks,PlaceholderAPI glyphs,ItemsAdder glyphs,Oraxen glyphs, Nexo glyphs, chat rank textures,scoreboard ranks,tablist icons,chat icons,chat prefix textures,Minecraft server GUI icons,ranks with textures,Minecraft decorative ranks,Minecraft textured tags,plugin ranks,Minecraft ranks PNG,Minecraft rank design tool,Minecraft server texture customization,plugin resource pack icons,font glyph editor,Minecraft custom UI elements,rank PNG generator,Minecraft rank display,glyph for permissions,rank image creator,server rank symbols,custom font symbols,Minecraft pack maker,crear rango con textura,iconos de rango en Minecraft,servidor con iconos de rango,crear icono para rank,generador de glifos Minecraft,glifos personalizados Minecraft,pack de texturas para rangos,textura para scoreboard,texturas en scoreboard Minecraft,tablist con iconos,texturas para chat Minecraft,icono en prefijo Minecraft,formatear rangos visualmente,rangos con imagen,complemento para rangos personalizados,crear glifos personalizados,Minecraft español,personalizar servidores Minecraft,generador de texturas Minecraft,iconos para servidor de Minecraft,generador de fuente Minecraft,MiniMessage iconos,LuckPerms iconos,Oraxen iconos de rango,ItemsAdder prefijos, spigot, bungeecord, paper, alonsoaliaga, minecraft, plugins, html, css, javascript, java, hex, rgb, generator,alonsoaliaga.github.io, alonsoaliaga.com, mcpfp, minecraft profile picture">
+    <meta name="og:keywords" content="Minecraft skin poser, Minecraft rank textures,rank texture generator,Minecraft glyphs,Minecraft custom font,glyph generator,Minecraft resource pack ranks,custom rank icons,custom rank tags,Minecraft tag textures,Minecraft rank icons,glyph-based ranks,rank texture pack,Minecraft rank images,rank generator,custom rank design,Minecraft font generator,Minecraft glyph system,rank formatting,glyph font,Minecraft server customization,resourcepack rank system,Minecraft font json,Minecraft glyph json,LuckPerms ranks,MiniMessage ranks,PlaceholderAPI glyphs,ItemsAdder glyphs,Oraxen glyphs, Nexo glyphs, chat rank textures,scoreboard ranks,tablist icons,chat icons,chat prefix textures,Minecraft server GUI icons,ranks with textures,Minecraft decorative ranks,Minecraft textured tags,plugin ranks,Minecraft ranks PNG,Minecraft rank design tool,Minecraft server texture customization,plugin resource pack icons,font glyph editor,Minecraft custom UI elements,rank PNG generator,Minecraft rank display,glyph for permissions,rank image creator,server rank symbols,custom font symbols,Minecraft pack maker,crear rango con textura,iconos de rango en Minecraft,servidor con iconos de rango,crear icono para rank,generador de glifos Minecraft,glifos personalizados Minecraft,pack de texturas para rangos,textura para scoreboard,texturas en scoreboard Minecraft,tablist con iconos,texturas para chat Minecraft,icono en prefijo Minecraft,formatear rangos visualmente,rangos con imagen,complemento para rangos personalizados,crear glifos personalizados,Minecraft español,personalizar servidores Minecraft,generador de texturas Minecraft,iconos para servidor de Minecraft,generador de fuente Minecraft,MiniMessage iconos,LuckPerms iconos,Oraxen iconos de rango,ItemsAdder prefijos, spigot, bungeecord, paper, alonsoaliaga, minecraft, plugins, html, css, javascript, java, hex, rgb, generator,alonsoaliaga.github.io, alonsoaliaga.com, mcpfp, minecraft profile picture">
+  
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* FONTS */
+        @font-face {
+            font-family: MinecraftRegular;
+            src: url(https://raw.githubusercontent.com/AlonsoAliaga/skin-poser/main/assets/fonts/MinecraftRegular.otf);
+        }
+        @font-face {
+            font-family: MinecraftBold;
+            src: url(https://raw.githubusercontent.com/AlonsoAliaga/skin-poser/main/assets/fonts/MinecraftBold.otf);
+        }
+
+        /* Color Palette */
+        :root {
+            /* Light Mode */
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --border-color: #aaa;
+            
+            --btn-bg: #f8fdc9; 
+            --btn-border: #333333;
+            --btn-text: #272727;
+            
+            --input-bg: #ffffff;
+            --input-border: #cccccc;
+            --input-text: #000000;
+            --link-color: #5555FF;
+
+            /* Canvas Background Light */
+            --canvas-gradient-start: #f5f5f5;
+            --canvas-gradient-end: #dcdcdc;
+            
+            --container-bg: #f9f9f9;
+            --showcase-border: silver;
+        }
+
+        body.dark-mode {
+            /* Dark Mode */
+            --bg-color: #1c1c1c; 
+            --text-color: #d0d0d0;
+            --border-color: #555;
+
+            --btn-bg: #ffd5f2; 
+            --btn-border: #25172f;
+            --btn-text: #272727; 
+            
+            --input-bg: #e4d2de;
+            --input-border: #43245c;
+            --input-text: #272727;
+            --link-color: #5555FF;
+
+            /* Canvas Background Dark */
+            --canvas-gradient-start: #2a2a2a;
+            --canvas-gradient-end: #1a1a1a;
+            
+            --container-bg: #111;
+            --showcase-border: #555; 
+        }
+
+        body { 
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'MinecraftRegular', sans-serif;
+            overflow-x: hidden;
+            margin: auto;
+            text-align: center;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Rainbow Text */
+        .rainbow {
+            background: linear-gradient(to right, #6666ff, #0099ff , #00ff00, #ff3399, #6666ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: rainbow_animation 2s ease-in-out infinite;
+            background-size: 400% 100%;
+            font-family: 'MinecraftBold', sans-serif;
+        }
+        @keyframes rainbow_animation {
+            0%,100% { background-position: 0 0; }
+            50% { background-position: 100% 0; }
+        }
+
+        /* Top Notification Bar */
+        #online-counter {
+            width: 100%;
+            background-color: #00aa00; 
+            color: white;
+            text-align: center;
+            padding: 4px;
+            font-size: 16px;
+            text-shadow: 1px 1px 0 #000;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            min-height: 32px;
+        }
+
+        /* Warning Text */
+        .warning-text {
+            color: #FF5555; 
+            font-size: 15px; /* Updated to 15px */
+            text-shadow: 1px 1px 0 #000;
+            margin-bottom: 10px;
+            font-family: 'MinecraftBold';
+            margin-top: 5px;
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        /* Description Box */
+        .description-box {
+            border: 2px solid var(--border-color);
+            border-radius: 30px;
+            padding: 20px 50px;
+            background-color: transparent;
+            max-width: 800px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 16px;
+            position: relative;
+        }
+
+        /* Titles */
+        .main-title {
+            font-size: 40px;
+            margin-bottom: 2px;
+            text-decoration: none;
+            color: #5555FF;
+            text-shadow: 2px 2px 0 #000;
+            font-family: 'MinecraftBold';
+        }
+        .main-title span { color: #ffffff; }
+
+        /* Custom Button Style */
+        .btn-custom {
+            font-family: 'MinecraftRegular';
+            border-radius: 25px;
+            border-color: var(--btn-border);
+            background-color: var(--btn-bg);
+            color: var(--btn-text);
+            border-style: solid;
+            border-width: 2px;
+            padding: 4px 12px; 
+            cursor: pointer;
+            font-size: 14px; 
+            transition: transform 0.1s, filter 0.2s;
+            box-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            height: 28px; 
+        }
+        .btn-custom:active { transform: translate(2px, 2px); box-shadow: none; }
+        .btn-custom:disabled {
+            filter: grayscale(100%);
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+        
+        .btn-custom input[type="checkbox"] { 
+            accent-color: #ff3399; 
+            width: 14px; 
+            height: 14px; 
+            cursor: pointer;
+        }
+
+        /* Input Style */
+        .input-custom {
+            font-family: 'MinecraftRegular';
+            background-color: var(--input-bg);
+            border-color: var(--input-border);
+            color: var(--input-text);
+            border-style: solid;
+            border-width: 2px; 
+            border-radius: 10px; 
+            padding: 4px 8px; 
+            font-size: 14px;
+            text-align: center;
+            height: 28px;
+        }
+        .input-custom:focus { outline: none; }
+        .input-custom:disabled { opacity: 0.6; cursor: not-allowed; }
+
+        /* Main Layout */
+        .main-layout {
+            display: flex;
+            width: 100%;
+            max-width: 1400px;
+            justify-content: center;
+            gap: 20px;
+            padding: 0 10px;
+        }
+        .ad-space { width: 160px; flex-shrink: 0; display: flex; flex-direction: column; gap: 20px; }
+        
+        /* App Container */
+        .app-container {
+            width: 100%;
+            max-width: 950px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px; 
+        }
+
+        .content-row {
+            display: flex;
+            gap: 15px;
+            align-items: stretch; 
+        }
+
+        /* Canvas Box */
+        .canvas-box {
+            flex-grow: 1;
+            border: 2px solid var(--border-color);
+            border-radius: 20px;
+            background: radial-gradient(circle at center, var(--canvas-gradient-start) 0%, var(--canvas-gradient-end) 100%);
+            height: auto; 
+            min-height: 600px; 
+            position: relative;
+            overflow: hidden;
+        }
+        canvas { display: block; outline: none; cursor: move; width: 100%; height: 100%; }
+
+        /* Sidebar & Fieldsets */
+        .sidebar { width: 340px; flex-shrink: 0; display: flex; flex-direction: column; gap: 8px; }
+
+        fieldset {
+            border: 2px solid var(--border-color); 
+            border-radius: 20px;
+            padding: 10px 15px 15px 15px;
+            margin-top: 2px;
+            background: transparent;
+            position: relative; /* For overlays */
+        }
+        
+        /* Increased padding for Pose Editor Fieldset to prevent crowding */
+        .pose-editor-fieldset {
+            padding: 15px 20px 20px 20px !important;
+        }
+
+        legend {
+            text-align: center;
+            padding: 0 5px; 
+            font-size: 14px;
+            color: var(--text-color);
+            font-family: 'MinecraftBold';
+        }
+
+        /* Specific padding for Pose Data */
+        #feature-posedata {
+            padding-bottom: 10px; 
+            position: relative;
+        }
+
+        /* Tabs Logic */
+        .tabs-container {
+            display: flex;
+            justify-content: center;
+            gap: 2px;
+            margin-bottom: -2px; 
+            position: relative;
+            z-index: 10;
+            padding: 0 10px;
+        }
+        .tab-btn { 
+            padding: 4px 12px;
+            text-align: center; 
+            font-size: 12px; 
+            cursor: pointer; 
+            border-radius: 10px 10px 0 0;
+            background-color: var(--container-bg); 
+            border: 2px solid var(--border-color);
+            border-bottom: 2px solid var(--border-color); 
+            color: var(--text-color);
+            opacity: 0.6;
+            transition: opacity 0.2s, background-color 0.2s;
+        }
+        .tab-btn.active { 
+            opacity: 1; 
+            font-weight: bold;
+            background-color: var(--container-bg);
+            border-bottom: 2px solid var(--container-bg); 
+            z-index: 20;
+        }
+        
+        /* Compact Controls */
+        .parts-container {
+            background-color: var(--container-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 15px;
+            padding: 15px 20px 20px 20px;
+            border-top-left-radius: 15px; 
+            border-top-right-radius: 15px;
+            margin-top: 0;
+            position: relative;
+            z-index: 5;
+        }
+
+        .slider-group { 
+            display: flex; 
+            align-items: center; 
+            gap: 5px; 
+            margin-bottom: 2px; 
+        }
+        .slider-group label { min-width: 12px; font-size: 12px; font-family: 'MinecraftBold'; }
+        
+        /* Input Number Styling */
+        input[type=number] {
+            text-align: center;
+            padding: 0;
+            font-size: 10px;
+            height: 18px;
+            width: 35px;
+            border-radius: 4px;
+            border-width: 1px;
+        }
+
+        /* Custom Range Slider */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+            margin: 0;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 12px; 
+            width: 6px;
+            border-radius: 2px;
+            background: #5555FF; 
+            cursor: pointer;
+            margin-top: -4px; 
+            box-shadow: 1px 1px 0px #000000;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: #888;
+            border-radius: 2px;
+        }
+        
+        /* Parts Scroll Area */
+        .parts-list { 
+            padding: 5px 10px; 
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+        }
+
+        .pose-data-area {
+            background-color: var(--input-bg);
+            border: 2px solid var(--input-border);
+            color: var(--input-text);
+            width: calc(100% - 20px); 
+            height: 60px;
+            border-radius: 15px;
+            padding: 8px;
+            font-family: monospace;
+            font-size: 10px;
+            resize: none;
+            margin: 10px auto 0 auto; 
+            display: block;
+        }
+
+        /* Error Popup Style */
+        .error-popup {
+            position: fixed;
+            bottom: -100px; 
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #500000; 
+            border: 2px solid #ff5555; 
+            color: white;
+            padding: 10px 20px;
+            font-family: 'MinecraftRegular';
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            box-shadow: 0 4px 0 rgba(0,0,0,0.5); 
+            z-index: 9999; 
+            transition: bottom 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28); 
+            border-radius: 4px;
+            pointer-events: none; 
+        }
+        .error-popup.show {
+            bottom: 40px; 
+        }
+
+        /* Showcase Styles FIXED */
+        .showcase-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 5px; 
+            flex-wrap: nowrap;
+            width: 100%;
+            max-width: 100%;
+        }
+        .showcase-box {
+            border: 2px solid var(--showcase-border);
+            padding: 0;
+            width: 32%;
+            border-radius: 0; 
+            display: flex;
+            justify-content: center;
+            background: transparent;
+            flex-direction: column; 
+            align-items: center;
+        }
+        .showcase-legend {
+            text-align: center;
+            width: 95%; 
+            padding: 0 5px 5px 5px;
+            font-family: 'MinecraftBold';
+            font-size: 14px;
+            color: var(--text-color);
+            margin: auto; 
+            line-height: 1.2;
+            background-color: var(--bg-color); 
+        }
+        .showcase-img {
+            height: 200px;
+            width: auto;
+            max-width: 100%;
+            cursor: pointer;
+            border-radius: 0 0 8px 8px;
+            transition: transform 0.2s;
+            margin-bottom: 0px;
+            object-fit: contain; 
+        }
+        .showcase-img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Options/Examples Box Style */
+        .options {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .examples {
+            width: 100%;
+            border: 2px solid var(--border-color);
+            border-radius: 30px;
+            padding: 20px 30px 20px 30px;
+            margin-top: 10px;
+            text-align: center;
+        }
+        /* Links in tools section */
+        #tools-for-you a {
+            color: var(--link-color);
+            text-decoration: none;
+        }
+        #tools-for-you a:hover {
+            color: #FFFF55;
+            text-decoration: none;
+        }
+        #tools-for-you span.rainbow {
+            display: inline-block;
+        }
+        #tools-for-you span.rainbow a {
+            background: inherit;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Floating Button CSS */
+        #mybutton {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            padding: 0;
+            border: none;
+            background: none;
+            font-family: MinecraftRegular;
+            z-index: 9999;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #mybutton:hover {
+            bottom: 15px;
+            right: 15px;
+        }
+        
+        .floating-icon {
+            width: 96px; /* ~20% larger than 80px */
+            height: auto;
+            image-rendering: pixelated;
+            filter: drop-shadow(4px 4px 2px rgba(0,0,0,0.5));
+            cursor: pointer;
+        }
+
+        #visitor-counter {
+            margin-top: -5px;
+            background: rgba(0,0,0,0.7);
+            padding: 2px 8px;
+            border-radius: 10px;
+            /* Border removed as requested */
+        }
+        #counter-amount {
+            color: white;
+            font-size: 12px;
+            text-shadow: 1px 1px 0 #000;
+        }
+
+        /* Feature Locked Overlay - Improved Logic */
+        .ad-locked-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(236, 28, 28, 0.85); /* Semi-transparent red */
+            display: flex;
+            flex-direction: row; /* Default row */
+            flex-wrap: wrap; /* Allows text flow */
+            border-radius: 12px;
+            align-items: center;
+            justify-content: center;
+            cursor: not-allowed;
+            z-index: 50;
+            color: #ffffff;
+            font-family: 'MinecraftBold';
+            text-shadow: 1px 1px 0 #000;
+            padding: 5px;
+            text-align: center;
+            gap: 5px;
+        }
+        
+        .ad-locked-overlay span.emoji {
+            font-size: 16px;
+            display: inline-block;
+        }
+        
+        .ad-locked-overlay span.text {
+            /* Font size will be overridden inline for specific elements */
+            line-height: 1.2;
+        }
+        
+        /* Preset Button Style */
+        .preset-btn {
+            background-color: var(--input-bg);
+            border: 2px solid var(--input-border);
+            color: var(--input-text);
+            border-radius: 12px;
+            padding: 8px;
+            text-align: center;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+        .preset-btn:hover {
+            background-color: var(--btn-bg);
+            border-color: var(--btn-border);
+        }
+        .preset-img {
+            width: 300px;
+            /* margin-bottom: -30px; */
+            margin-top: -10px;
+            /* image-rendering: pixelated; */
+        }
+
+        .preset-btn span {
+            font-size: 20px !important;
+        }
+
+        @media (max-width: 850px) {
+            .content-row { flex-direction: column; }
+            .canvas-box { height: 400px; width: 100%; min-height: 400px; }
+            .sidebar { width: 100%; }
+            .ad-space { display: none; }
+            .showcase-container { flex-wrap: wrap; }
+            .showcase-box { width: 100%; }
+            #mybutton { display: none; } 
+        }
+    </style>
+</head>
+<body class="dark-mode">
+
+    <!-- Notification Bar -->
+    <div id="online-counter" style="display:none;"></div>
+    
+    <!-- Title -->
+    <div class="text-center mt-2">
+        <a href="https://alonsoaliaga.com/skin-poser" class="main-title block rainbow">
+            Skin Pose <span>Generator</span>
+        </a>
+    </div>
+
+    <!-- Separator Line -->
+    <hr style="max-width: 900px; width: 1000px; border-color: #888; margin-bottom: 5px;">
+
+    <!-- Warning Bar -->
+    <div class="warning-text">
+        Use Google Chrome or Opera for a better experience. Edge is reported as not compatible!
+    </div>
+
+    <!-- Description Box -->
+    <div class="description-box">
+        <p class="rainbow font-bold mb-2 text-xl" style="display:inline-block;">How is this different from other posers?</p>
+        <p>
+            Well, let's be honest. There aren't too many generators out there. In any case this one has
+            <span style="color:#ff3399;">many</span> cool options you might find interesting.
+        </p>
+        <p class="text-red-400 mt-2 font-bold" style="color:#ff5555;">No more paying commissions for simple skin poses!</p>
+        <div class="text-sm mt-2" style="color:#5555ff;">
+            ⚠️ If you have cool ideas, suggest them in our <a href="https://alonsoaliaga.com/discord" style="text-decoration:underline;">official discord server</a>.<br>
+            💎 If you found this tool useful, consider <a href="https://alonsoaliaga.com/donate" style="text-decoration:underline;">making a donation</a> for our hard work. We appreciate it!
+        </div>
+    </div>
+
+    <!-- Site Options -->
+    <div style="margin-bottom: 20px;">
+        <span class="font-bold mr-2">Site options:</span>
+        <label class="btn-custom">
+            <input type="checkbox" id="darkModeCheck" checked> Dark Mode 👁️‍🗨️
+        </label>
+    </div>
+
+    <!-- Main Layout -->
+    <div class="main-layout">
+        <div class="ad-space"></div>
+
+        <!-- Central Column -->
+        <div class="flex flex-col w-full max-w-[950px]">
+            
+            <!-- App Container -->
+            <div class="app-container">
+                
+                <div class="content-row">
+                    
+                    <!-- Canvas -->
+                    <div class="canvas-box" id="canvasContainer">
+                        <canvas id="skinViewerCanvas"></canvas>
+                        
+                        <!-- Top Buttons Container -->
+                        <div class="absolute top-2 right-2 flex gap-2 z-20">
+                            <!-- Color Picker Button with Reset -->
+                            <div class="flex gap-1">
+                                <div class="relative">
+                                    <input type="color" id="bgColorPicker" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" title="Change Background Color">
+                                    <button class="bg-blue-600 border-2 border-white text-white px-2 py-1 text-xs rounded shadow hover:bg-blue-700 font-bold flex items-center gap-1">
+                                        🎨 BG
+                                    </button>
+                                </div>
+                                <button id="resetBgBtn" class="bg-gray-600 border-2 border-white text-white px-1 py-1 text-xs rounded shadow hover:bg-gray-700 font-bold flex items-center" title="Reset Background">
+                                    ❌
+                                </button>
+                            </div>
+                            
+                            <!-- Reset Button -->
+                            <button id="resetPoseBtn" class="bg-red-600 border-2 border-white text-white px-2 py-1 text-xs rounded shadow hover:bg-red-700 font-bold flex items-center gap-1">
+                                ⛔ Reset
+                            </button>
+                        </div>
+
+                        <div id="toast" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/80 border border-white px-3 py-1 rounded text-xs opacity-0 transition-opacity pointer-events-none text-white font-bold">Done</div>
+                    </div>
+
+                    <!-- Sidebar Controls -->
+                    <div class="sidebar">
+                        
+                        <div class="flex flex-col gap-2 mb-2 items-center">
+                            <div class="flex w-full gap-2 justify-center">
+                                <input type="text" id="usernameInput" value="AlonsoAliaga" class="input-custom flex-grow" style="border-radius: 25px;" placeholder="Username">
+                                <button id="getSkinBtn" class="btn-custom" style="min-width: 80px;">
+                                    📂 Load
+                                </button>
+                            </div>
+                            
+                            <!-- FEATURE: Upload -->
+                            <div id="feature-upload" class="w-full mt-2 relative">
+                                <label class="btn-custom w-full bg-[#aa00aa] text-white border-white justify-center" style="background:#a020f0; color:white; border-color: white;">
+                                    📁 UPLOAD SKIN PNG
+                                    <input type="file" id="skinUpload" accept="image/png" class="hidden">
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Options Fieldset -->
+                        <fieldset>
+                            <legend>&nbsp;Select your options 🎮&nbsp;</legend>
+                            <div class="flex justify-center gap-4 mb-2">
+                                <label class="btn-custom" style="padding: 2px 8px; font-size:12px;">
+                                    <input type="checkbox" id="slimToggle"> Slim (Alex)
+                                </label>
+                                <label class="btn-custom" style="padding: 2px 8px; font-size:12px;">
+                                    <input type="checkbox" id="shadowToggle"> Shadows
+                                </label>
+                            </div>
+                            <div class="flex gap-2 justify-center mt-2 mb-2">
+                                <button id="modeRotate" class="btn-custom w-1/2 justify-center" style="padding-left: 6px; padding-right: 6px; margin: 0 5px; border-radius: 12px;">
+                                    🔁 ROTATION
+                                </button>
+                                <button id="modePosition" class="btn-custom w-1/2 justify-center" style="background: #ccc; border-color:#888; padding-left: 6px; padding-right: 6px; margin: 0 5px; border-radius: 12px;">
+                                    ↘️ POSITION
+                                </button>
+                            </div>
+                        </fieldset>
+
+                        <!-- Pose Editor Fieldset - Added pose-editor-fieldset class for extra padding -->
+                        <fieldset class="pose-editor-fieldset">
+                            <legend>&nbsp;Pose Editor 🦴&nbsp;</legend>
+                            
+                            <div class="tabs-container">
+                                <div class="tab-btn active" data-tab="torso">BODY</div>
+                                <div class="tab-btn" data-tab="brazos">ARMS</div>
+                                <div class="tab-btn" data-tab="piernas">LEGS</div>
+                            </div>
+                            
+                            <!-- Contenedor sólido para los sliders -->
+                            <div class="parts-container">
+                                <div class="parts-list">
+                                    <div id="tab-torso" class="tab-content flex flex-col gap-1"></div>
+                                    <div id="tab-brazos" class="tab-content hidden flex flex-col gap-1"></div>
+                                    <div id="tab-piernas" class="tab-content hidden flex flex-col gap-1"></div>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <!-- Export Fieldset -->
+                        <fieldset>
+                            <legend>&nbsp;Export 📷&nbsp;</legend>
+                            <!-- FEATURE: Screenshot -->
+                            <div id="feature-screenshot" class="flex flex-col gap-3" style="padding: 0 10px;">
+                                <label class="flex justify-center items-center gap-2 text-sm font-bold mb-1">
+                                    <input type="checkbox" id="watermarkToggle" checked style="accent-color: #55ff55;"> Use Watermark
+                                </label>
+                                <button id="takeScreenshotBtn" class="btn-custom w-full justify-center" style="background:#55ff55; border-color:#00aa00; font-size: 14px; margin-bottom: 10px;">
+                                    📷 TAKE SCREENSHOT
+                                </button>
+                            </div>
+                        </fieldset>
+
+                    </div>
+                </div>
+
+                <!-- Pose Data (Bottom) -->
+                <fieldset id="feature-posedata" style="margin-bottom: 20px;">
+                    <legend>&nbsp;Pose Data (JSON) 💾&nbsp;</legend>
+                    <!-- FEATURE: Pose Data Content -->
+                    <div id="pose-data-content" class="relative">
+                        <div class="flex gap-2 mb-2 justify-center">
+                            <button id="copyPoseBtn" class="btn-custom" style="font-size:12px; padding: 2px 10px;">
+                                📋 COPY
+                            </button>
+                            <button id="loadPoseBtn" class="btn-custom" style="font-size:12px; padding: 2px 10px;">
+                                📂 LOAD
+                            </button>
+                        </div>
+                        <textarea id="poseInput" class="pose-data-area"></textarea>
+                    </div>
+                </fieldset>
+                
+                <!-- NEW FEATURE: Presets Section -->
+                <fieldset id="feature-presets" style="margin-bottom: 20px; position:relative;">
+                    <legend>&nbsp;Presets 📂&nbsp;</legend>
+                    <div id="presets-container" class="grid grid-cols-3 gap-2 p-2">
+                        <!-- Buttons will be generated here -->
+                    </div>
+                </fieldset>
+
+            </div>
+
+            <!-- Showcase Section -->
+            <div class="showcase-container">
+                <fieldset class="showcase-box" style="display: flex; justify-content: center;">
+                    <legend class="showcase-legend" id="thelegend">Looking for a pixelart like this? 💎</legend>
+                    <img src="https://raw.githubusercontent.com/AlonsoAliaga/rank-textures/main/assets/showcase/pixelart-showcase.png" class="showcase-img" onclick="window.open('https://alonsoaliaga.com/mcpfp', '_blank');">
+                </fieldset>
+                
+                <fieldset class="showcase-box" style="display: flex; justify-content: center;">
+                    <legend class="showcase-legend" id="thelegend">Looking for a render like this one? 💎</legend>
+                    <img src="https://raw.githubusercontent.com/AlonsoAliaga/rank-textures/main/assets/showcase/render-showcase.png" class="showcase-img" onclick="window.open('https://alonsoaliaga.com/mc-renders', '_blank');">
+                </fieldset>
+                
+                <fieldset class="showcase-box" style="display: flex; justify-content: center;">
+                    <legend class="showcase-legend" id="thelegend">Looking for an animation like this one? 💎</legend>
+                    <img src="https://raw.githubusercontent.com/AlonsoAliaga/rank-textures/main/assets/showcase/skin-showcase.gif" class="showcase-img" onclick="window.open('https://alonsoaliaga.com/mc-skin', '_blank');">
+                </fieldset>
+            </div>
+
+            <div class="options">
+                <div style="border-radius: 25px;font-size: 18px ;padding-top: 20px;padding-bottom: 20px; font-family: MinecraftRegular;" class="examples">
+                    <h2 style="font-size: 18px; font-family: MinecraftBold;">More tools for you:</h2>
+                    <div style="text-align: left;font-size: 20px;" id="tools-for-you">
+                    </div>
+                    <br>
+                    <a href="https://alonsoaliaga.github.io" rel="noopener" target="_blank" style="font-size: 18px; font-family: MinecraftBold; color: var(--link-color); text-decoration: none;">AlonsoAliaga Development</a>
+                </div>
+            </div>
+            
+            <h2 style="font-size: 15px ;text-align: center; margin-top: 10px;">Thanks to <a href="https://alonsoaliaga.com/donate" rel="noopener" target="_blank" style="color:var(--link-color);">AlonsoAliaga</a> for his hard work during the development of this tool.</h2>
+            <br>
+
+        </div>
+
+        <div class="ad-space"></div>
+    </div>
+    
+    <div id="mybutton">
+        <a href="https://alonsoaliaga.github.io">
+            <img class="floating-icon" src="https://raw.githubusercontent.com/AlonsoAliaga/alonsoaliaga.github.io/main/assets/img/apple-touch-icon.png">
+        </a>
+        <div id="visitor-counter">
+            <span id="counter-amount" style="font-family: MinecraftBold;font-weight: bold;">Visits: 0</span>
+        </div>
+    </div>
+
+    <div id="errorPopup" class="error-popup">
+        <span style="font-size: 20px;">💎</span>
+        <div style="text-align: center;">
+            <div style="font-weight: bold; font-size: 16px;">Invalid Username!</div>
+            <div style="font-size: 12px; opacity: 0.9;">Please check the name.</div>
+        </div>
+        <span style="font-size: 20px;">💎</span>
+    </div>
+
+    <div id="apiErrorPopup" class="error-popup">
+        <span style="font-size: 20px;">⚠️</span>
+        <div style="text-align: center;">
+            <div style="font-weight: bold; font-size: 16px;">Service Unavailable!</div>
+            <div style="font-size: 12px; opacity: 0.9;">The skin API is down.<br>Try again later or upload a file.</div>
+        </div>
+        <span style="font-size: 20px;">⚠️</span>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+
+    <script>
+        if (typeof kofiWidgetOverlay !== 'undefined') {
+            kofiWidgetOverlay.draw('alonsoaliaga', {
+                'type': 'floating-chat',
+                'floating-chat.donateButton.text': 'Send love ❤️',
+                'floating-chat.donateButton.background-color': '#fcbf47',
+                'floating-chat.donateButton.text-color': '#323842'
+            });
+        }
+
+        function processAds() {
+            const lockContainers = [
+                {id: 'feature-upload', text: 'Disable AdBlock for Custom Texture', small: true},
+                {id: 'feature-screenshot', text: 'Disable AdBlock to use Screenshot'},
+                {id: 'pose-data-content', text: 'Disable AdBlock to use Pose Data'}
+            ];
+
+            lockContainers.forEach(feature => {
+                const el = document.getElementById(feature.id);
+                if(el && !el.querySelector('.ad-locked-overlay')) {
+                    const overlay = document.createElement('div');
+                    overlay.className = 'ad-locked-overlay';
+                    const fontSize = feature.small ? '10px' : '14px';
+                    
+                    overlay.innerHTML = `
+                        <span class="emoji" style="font-size: 16px;">🔒</span>
+                        <span class="text" style="font-size: ${fontSize};">${feature.text}</span>
+                    `;
+                    el.appendChild(overlay);
+                }
+            });
+            
+            precessor();
+        }
+        
+        function precessor() {
+            const el = document.getElementById('feature-presets');
+            if(el && !el.querySelector('.ad-locked-overlay')) {
+                // Force height to 300px as requested
+                el.style.height = "300px";
+                el.style.overflow = "hidden";
+                
+                const overlay = document.createElement('div');
+                overlay.className = 'ad-locked-overlay';
+                overlay.innerHTML = `
+                    <span class="emoji" style="font-size: 16px;">🔒</span>
+                    <span class="text" style="font-size: 14px;">Disable AdBlock to access presets</span>
+                `;
+                el.appendChild(overlay);
+            }
+        }
+
+        const darkModeCheck = document.getElementById('darkModeCheck');
+        const body = document.body;
+
+        darkModeCheck.addEventListener('change', () => {
+            if (darkModeCheck.checked) {
+                body.classList.add('dark-mode');
+            } else {
+                body.classList.remove('dark-mode');
+            }
+        });
+
+        const bgColorPicker = document.getElementById('bgColorPicker');
+        const canvasContainer = document.getElementById('canvasContainer');
+        const resetBgBtn = document.getElementById('resetBgBtn');
+        
+        bgColorPicker.addEventListener('input', (e) => {
+            canvasContainer.style.background = e.target.value;
+            poseState.bgColor = e.target.value;
+            updatePoseDataField();
+        });
+
+        resetBgBtn.addEventListener('click', () => {
+            canvasContainer.style.background = '';
+            poseState.bgColor = null;
+            updatePoseDataField();
+        });
+
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.textContent = msg;
+            t.style.opacity = '1';
+            setTimeout(() => {
+                t.style.opacity = '0';
+            }, 2500);
+        }
+
+        function showErrorPopup() {
+            const el = document.getElementById('errorPopup');
+            el.classList.add('show');
+            setTimeout(() => {
+                el.classList.remove('show');
+            }, 4000); 
+        }
+
+        function showApiErrorPopup() {
+            const el = document.getElementById('apiErrorPopup');
+            el.classList.add('show');
+            setTimeout(() => {
+                el.classList.remove('show');
+            }, 5000); 
+        }
+
+        function checkSite(window) {
+            setTimeout(()=>{
+              let href = window.location.href;
+              if(!href.includes(atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw=="))) {
+                try{document.title = `Page stolen from https://${atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw==")}`;}catch(e){}
+                window.location = `https://${atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw==")}/skin-poser/`}
+            });
+            fetch('https://raw.githubusercontent.com/AlonsoAliaga/AlonsoAliagaAPI/refs/heads/main/api/tools/tools-list.json')
+                .then(res => res.json())
+                .then(content => {
+                let toolsData = content;
+                let toolsArray = []
+                for(let toolData of toolsData) {
+                    let clazz = typeof toolData.clazz == "undefined" ? "" : ` class="${toolData.clazz}"`;
+                    let style = typeof toolData.style == "undefined" ? "" : ` style="${toolData.style}"`;
+                    toolsArray.push(`<span>💠</span> <span${clazz}${style}><a title="${toolData.description}" id="tool-priority-${toolData.priority}" href="${toolData.link}" target="_blank">${toolData.name}</a></span>`);
+                }
+                document.getElementById("tools-for-you").innerHTML = toolsArray.join(`<br>`);
+                })
+                .catch(err => console.log("Tools fetch error:", err));
+        }
+
+        function loadChecking() {
+            let href = window.location.href;
+            if(!href.includes(atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw=="))) return;
+            let link = atob("aHR0cHM6Ly9hbG9uc29hcGkuZGlzY2xvdWQuYXBwL2NoZWNraW5nP3NpdGU9PHNpdGU+JmtleT08a2V5Pg==")
+                .replace(/<site>/g,"skin-poser").replace(/<key>/g,"KEY-A");
+            
+            let counter = document.getElementById("online-counter");
+            
+            if(counter) {
+                $.ajax({
+                    url: link,
+                    type: "GET", 
+                    dataType: "json",
+                    data: {},
+                    success: function (result) {
+                        counter.dataset.failed = "0";
+                        counter.style.display = "flex";
+                        if(isNaN(result)) {
+                            counter.textContent = `🟡 You shouldn't be reading this. Report it on https://alonsoaliaga.com/discord`;
+                            counter.style.backgroundColor = "yellow";
+                            counter.style.color = "black";
+                        } else {
+                            counter.textContent = `🟢 ${result} online using our Skin Poser Generator for Minecraft!`;
+                            counter.style.backgroundColor = "green";
+                            counter.style.color = "white";
+                        }
+                    },
+                    error: function (e) {
+                        if(counter.style.display != "none") {
+                            let currentFails = +counter.dataset.failed || 0;
+                            if(currentFails >= 1){
+                                counter.style.display = "none"
+                            } else {
+                                counter.textContent = `🔴 Check your internet connection!`;
+                                counter.style.backgroundColor = "#7c0000";
+                                counter.dataset.failed = `${currentFails + 1}`
+                            }
+                        }
+                    }
+                });
+            }
+        }
+        
+        let times = 0;
+        function loadCounter() {
+            let href = window.location.href;
+            if(!href.includes(atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw=="))) return;
+            let link = atob("aHR0cHM6Ly9hbG9uc29hcGkuZGlzY2xvdWQuYXBwL2NvdW50ZXI/c2l0ZT08c2l0ZT4ma2V5PTxrZXk+")
+            .replace(/<site>/g,"skin-poser").replace(/<key>/g,"KEY-A");
+            let counter = document.getElementById("visitor-counter");
+            
+            if(counter) {
+            $.ajax({
+                url: link,
+                type: "GET", 
+                dataType: "json",
+                data: {},
+                success: function (result) {
+                    if(isNaN(result))
+                        document.getElementById("counter-amount").innerHTML = "Click to return!";
+                    else document.getElementById("counter-amount").innerHTML = `Visits: ${result}`;
+                },
+                error: function (e) {
+                    times++;
+                    document.getElementById("counter-amount").innerHTML = "Click to return!";
+                    if(times <= 1) {
+                        setTimeout(()=>{
+                        loadCounter();
+                        },1000*10);
+                    }
+                }
+            });
+            }
+        }
+
+        // --- PRESETS DATA ---
+        const PRESET_POSES = {
+            "Idle": {
+                "data": '{"head":{"r":{"x":0,"y":0,"z":0},"p":{"x":0,"y":12,"z":0}},"body":{"r":{"x":0,"y":0,"z":0},"p":{"x":0,"y":6,"z":0}},"leftArm":{"r":{"x":0,"y":0,"z":0},"p":{"x":6,"y":10,"z":0}},"rightArm":{"r":{"x":0,"y":0,"z":0},"p":{"x":-6,"y":10,"z":0}},"leftLeg":{"r":{"x":0,"y":0,"z":0},"p":{"x":2,"y":0,"z":0}},"rightLeg":{"r":{"x":0,"y":0,"z":0},"p":{"x":-2,"y":0,"z":0}}}',
+                "image": "https://raw.githubusercontent.com/AlonsoAliaga/skin-poser/main/assets/presets/idle.png"
+            },
+            "Walking": {
+                "data": '{"head":{"r":{"x":0,"y":0,"z":0},"p":{"x":0,"y":12,"z":0}},"body":{"r":{"x":0,"y":0,"z":0},"p":{"x":0,"y":6,"z":0}},"leftArm":{"r":{"x":-20,"y":0,"z":0},"p":{"x":6,"y":10,"z":0}},"rightArm":{"r":{"x":20,"y":0,"z":0},"p":{"x":-6,"y":10,"z":0}},"leftLeg":{"r":{"x":20,"y":0,"z":0},"p":{"x":2,"y":0,"z":0}},"rightLeg":{"r":{"x":-20,"y":0,"z":0},"p":{"x":-2,"y":0,"z":0}}}',
+                "image": "https://raw.githubusercontent.com/AlonsoAliaga/skin-poser/main/assets/presets/walking.png"
+            },
+            "Running": {
+                "data": '{"head":{"r":{"x":0,"y":0,"z":0},"p":{"x":0,"y":12,"z":0}},"body":{"r":{"x":10,"y":0,"z":0},"p":{"x":0,"y":6,"z":0}},"leftArm":{"r":{"x":-45,"y":-10,"z":0},"p":{"x":6,"y":10,"z":0}},"rightArm":{"r":{"x":45,"y":10,"z":0},"p":{"x":-6,"y":10,"z":0}},"leftLeg":{"r":{"x":45,"y":0,"z":0},"p":{"x":2,"y":0,"z":0}},"rightLeg":{"r":{"x":-45,"y":0,"z":0},"p":{"x":-2,"y":0,"z":0}}}',
+                "image": "https://raw.githubusercontent.com/AlonsoAliaga/skin-poser/main/assets/presets/running.png"
+            },
+            "Zombie": {
+                "data": '{"head":{"r":{"x":10,"y":0,"z":0},"p":{"x":0,"y":12,"z":0}},"body":{"r":{"x":5,"y":0,"z":0},"p":{"x":0,"y":6,"z":0}},"leftArm":{"r":{"x":-90,"y":0,"z":0},"p":{"x":6,"y":10,"z":0}},"rightArm":{"r":{"x":-90,"y":0,"z":0},"p":{"x":-6,"y":10,"z":0}},"leftLeg":{"r":{"x":0,"y":0,"z":0},"p":{"x":2,"y":0,"z":0}},"rightLeg":{"r":{"x":0,"y":0,"z":0},"p":{"x":-2,"y":0,"z":0}}}',
+                "image": "https://raw.githubusercontent.com/AlonsoAliaga/skin-poser/main/assets/presets/zombie.png"
+            },
+            "Sitting": {
+                "data": '{"head":{"r":{"x":0,"y":0,"z":0},"p":{"x":0,"y":12,"z":0}},"body":{"r":{"x":0,"y":0,"z":0},"p":{"x":0,"y":6,"z":0}},"leftArm":{"r":{"x":0,"y":0,"z":0},"p":{"x":6,"y":10,"z":0}},"rightArm":{"r":{"x":0,"y":0,"z":0},"p":{"x":-6,"y":10,"z":0}},"leftLeg":{"r":{"x":-90,"y":0,"z":0},"p":{"x":2,"y":0,"z":0}},"rightLeg":{"r":{"x":-90,"y":0,"z":0},"p":{"x":-2,"y":0,"z":0}}}',
+                "image": "https://raw.githubusercontent.com/AlonsoAliaga/skin-poser/main/assets/presets/sitting.png"
+            },
+            "T-Pose": {
+                "data": '{"head":{"r":{"x":0,"y":0,"z":0},"p":{"x":0,"y":12,"z":0}},"body":{"r":{"x":0,"y":0,"z":0},"p":{"x":0,"y":6,"z":0}},"leftArm":{"r":{"x":0,"y":0,"z":-90},"p":{"x":6,"y":10,"z":0}},"rightArm":{"r":{"x":0,"y":0,"z":90},"p":{"x":-6,"y":10,"z":0}},"leftLeg":{"r":{"x":0,"y":0,"z":0},"p":{"x":2,"y":0,"z":0}},"rightLeg":{"r":{"x":0,"y":0,"z":0},"p":{"x":-2,"y":0,"z":0}}}',
+                "image": "https://raw.githubusercontent.com/AlonsoAliaga/skin-poser/main/assets/presets/t-pose.png"
+            },
+            "Wave": {
+                "data": '{"head":{"r":{"x":0,"y":10,"z":0},"p":{"x":0,"y":12,"z":0}},"body":{"r":{"x":0,"y":0,"z":0},"p":{"x":0,"y":6,"z":0}},"leftArm":{"r":{"x":0,"y":0,"z":-10},"p":{"x":6,"y":10,"z":0}},"rightArm":{"r":{"x":0,"y":0,"z":160},"p":{"x":-6,"y":10,"z":0}},"leftLeg":{"r":{"x":0,"y":0,"z":0},"p":{"x":2,"y":0,"z":0}},"rightLeg":{"r":{"x":10,"y":0,"z":5},"p":{"x":-2,"y":0,"z":0}}}',
+                "image": "https://raw.githubusercontent.com/AlonsoAliaga/skin-poser/main/assets/presets/wave.png"
+            },
+            "Attack": {
+                "data": '{"head":{"r":{"x":0,"y":-20,"z":0},"p":{"x":0,"y":12,"z":0}},"body":{"r":{"x":0,"y":20,"z":0},"p":{"x":0,"y":6,"z":0}},"leftArm":{"r":{"x":10,"y":0,"z":-10},"p":{"x":6,"y":10,"z":0}},"rightArm":{"r":{"x":-110,"y":-10,"z":0},"p":{"x":-6,"y":10,"z":0}},"leftLeg":{"r":{"x":20,"y":0,"z":0},"p":{"x":2,"y":0,"z":0}},"rightLeg":{"r":{"x":-20,"y":0,"z":0},"p":{"x":-2,"y":0,"z":0}}}',
+                "image": "https://raw.githubusercontent.com/AlonsoAliaga/skin-poser/main/assets/presets/attack.png"
+            },
+            "Dance": {
+                "data": '{"head":{"r":{"x":0,"y":0,"z":10},"p":{"x":0,"y":12,"z":0}},"body":{"r":{"x":0,"y":0,"z":0},"p":{"x":0,"y":6,"z":0}},"leftArm":{"r":{"x":0,"y":0,"z":140},"p":{"x":6,"y":10,"z":0}},"rightArm":{"r":{"x":0,"y":0,"z":40},"p":{"x":-6,"y":10,"z":0}},"leftLeg":{"r":{"x":0,"y":0,"z":-10},"p":{"x":2,"y":0,"z":0}},"rightLeg":{"r":{"x":0,"y":0,"z":10},"p":{"x":-2,"y":0,"z":0}}}',
+                "image": "https://raw.githubusercontent.com/AlonsoAliaga/skin-poser/main/assets/presets/dance.png"
+            },
+            "Facepalm": {
+                "data": '{"head":{"r":{"x":20,"y":0,"z":0},"p":{"x":0,"y":12,"z":0}},"body":{"r":{"x":10,"y":0,"z":0},"p":{"x":0,"y":6,"z":0}},"leftArm":{"r":{"x":0,"y":0,"z":-10},"p":{"x":6,"y":10,"z":0}},"rightArm":{"r":{"x":-110,"y":-30,"z":20},"p":{"x":-6,"y":10,"z":0}},"leftLeg":{"r":{"x":0,"y":0,"z":0},"p":{"x":2,"y":0,"z":0}},"rightLeg":{"r":{"x":0,"y":0,"z":0},"p":{"x":-2,"y":0,"z":0}}}',
+                "image": "https://raw.githubusercontent.com/AlonsoAliaga/skin-poser/main/assets/presets/facepalm.png"
+            },
+            "Point": {
+                "data": '{"head":{"r":{"x":-10,"y":-20,"z":0},"p":{"x":0,"y":12,"z":0}},"body":{"r":{"x":0,"y":0,"z":0},"p":{"x":0,"y":6,"z":0}},"leftArm":{"r":{"x":0,"y":0,"z":-10},"p":{"x":6,"y":10,"z":0}},"rightArm":{"r":{"x":-90,"y":-30,"z":0},"p":{"x":-6,"y":10,"z":0}},"leftLeg":{"r":{"x":0,"y":0,"z":0},"p":{"x":2,"y":0,"z":0}},"rightLeg":{"r":{"x":10,"y":0,"z":5},"p":{"x":-2,"y":0,"z":0}}}',
+                "image": "https://raw.githubusercontent.com/AlonsoAliaga/skin-poser/main/assets/presets/point.png"
+            },
+            "Hero": {
+                "data": '{"head":{"r":{"x":-90,"y":0,"z":0},"p":{"x":0,"y":12,"z":0}},"body":{"r":{"x":2,"y":0,"z":0},"p":{"x":0,"y":5.5,"z":0}},"leftArm":{"r":{"x":180,"y":0,"z":0},"p":{"x":6,"y":10,"z":0}},"rightArm":{"r":{"x":180,"y":0,"z":0},"p":{"x":-6,"y":10,"z":0}},"leftLeg":{"r":{"x":0,"y":0,"z":0},"p":{"x":2,"y":0,"z":0}},"rightLeg":{"r":{"x":0,"y":0,"z":0},"p":{"x":-2,"y":0,"z":0}}}',
+                "image": "https://raw.githubusercontent.com/AlonsoAliaga/skin-poser/main/assets/presets/hero.png"
+            },
+            "Dab": {
+                "data": '{"head":{"r":{"x":22,"y":7,"z":0},"p":{"x":0,"y":12,"z":0}},"body":{"r":{"x":0,"y":0,"z":0},"p":{"x":0,"y":6,"z":0}},"leftArm":{"r":{"x":0,"y":0,"z":120},"p":{"x":6,"y":10,"z":0}},"rightArm":{"r":{"x":-103,"y":0,"z":46},"p":{"x":-6,"y":10,"z":0}},"leftLeg":{"r":{"x":0,"y":0,"z":0},"p":{"x":2,"y":0,"z":0}},"rightLeg":{"r":{"x":0,"y":0,"z":0},"p":{"x":-2,"y":0,"z":0}}}',
+                "image": "https://raw.githubusercontent.com/AlonsoAliaga/skin-poser/main/assets/presets/dab.png"
+            },
+            "Think": {
+                "data": '{"head":{"r":{"x":10,"y":-15,"z":0},"p":{"x":0,"y":12,"z":0}},"body":{"r":{"x":0,"y":0,"z":0},"p":{"x":0,"y":6,"z":0}},"leftArm":{"r":{"x":0,"y":0,"z":-5},"p":{"x":6,"y":10,"z":0}},"rightArm":{"r":{"x":-130,"y":-30,"z":-10},"p":{"x":-6,"y":10,"z":0}},"leftLeg":{"r":{"x":0,"y":0,"z":0},"p":{"x":2,"y":0,"z":0}},"rightLeg":{"r":{"x":0,"y":0,"z":0},"p":{"x":-2,"y":0,"z":0}}}',
+                "image": "https://raw.githubusercontent.com/AlonsoAliaga/skin-poser/main/assets/presets/think.png"
+            },
+            "Kick": {
+                "data": '{"head":{"r":{"x":0,"y":0,"z":0},"p":{"x":0,"y":12,"z":0}},"body":{"r":{"x":0,"y":0,"z":0},"p":{"x":0,"y":6,"z":0}},"leftArm":{"r":{"x":0,"y":16,"z":24},"p":{"x":6,"y":10,"z":0}},"rightArm":{"r":{"x":-28,"y":7,"z":-15},"p":{"x":-6,"y":10,"z":0}},"leftLeg":{"r":{"x":0,"y":0,"z":0},"p":{"x":2,"y":0,"z":0}},"rightLeg":{"r":{"x":-90,"y":0,"z":2},"p":{"x":-2,"y":0,"z":0}}}',
+                "image": "https://raw.githubusercontent.com/AlonsoAliaga/skin-poser/main/assets/presets/kick.png"
+            }
+        };
+
+        function renderPresets() {
+            const container = document.getElementById('presets-container');
+            container.innerHTML = '';
+            for (const [key, value] of Object.entries(PRESET_POSES)) {
+                const btn = document.createElement('div');
+                btn.className = 'preset-btn';
+                let imgHtml = '';
+                if(value.image) {
+                     imgHtml = `<img src="${value.image}" class="preset-img" onerror="this.style.display='none'">`;
+                }
+                btn.innerHTML = `${imgHtml}<span>${key}</span>`;
+                
+                btn.onclick = () => {
+                    if(value.data) {
+                        try {
+                            const loaded = JSON.parse(value.data);
+                             if(loaded.head && loaded.body) {
+                                for(let k in loaded) {
+                                   if(k !== 'camera') poseState[k] = loaded[k];
+                                }
+                                updateSkinPose();
+                                updateInputs();
+                                updatePoseDataField();
+                                showToast("Preset Loaded!");
+                            }
+                        } catch(e) { console.error(e); }
+                    }
+                };
+                container.appendChild(btn);
+            }
+        }
+
+        window.onload = function() {
+            initThree();
+            setupUI();
+            loadSkinFromUsername('AlonsoAliaga');
+            checkSite(window); 
+            loadCounter(); 
+            renderPresets();
+        };
+
+        setTimeout(()=>{
+            loadChecking();
+            setInterval(()=>{
+                loadChecking();
+            },10000)
+        }, 100);
+        
+        function setUVs(box, u, v, width, height, depth, textureWidth, textureHeight) {
+            const toFaceVertices = (x1, y1, x2, y2) => [
+                new THREE.Vector2(x1 / textureWidth, 1.0 - y2 / textureHeight),
+                new THREE.Vector2(x2 / textureWidth, 1.0 - y2 / textureHeight),
+                new THREE.Vector2(x2 / textureWidth, 1.0 - y1 / textureHeight),
+                new THREE.Vector2(x1 / textureWidth, 1.0 - y1 / textureHeight)
+            ];
+
+            const top = toFaceVertices(u + depth, v, u + width + depth, v + depth);
+            const bottom = toFaceVertices(u + width + depth, v, u + width * 2 + depth, v + depth);
+            const left = toFaceVertices(u, v + depth, u + depth, v + depth + height);
+            const front = toFaceVertices(u + depth, v + depth, u + width + depth, v + depth + height);
+            const right = toFaceVertices(u + width + depth, v + depth, u + width + depth * 2, v + height + depth);
+            const back = toFaceVertices(u + width + depth * 2, v + depth, u + width * 2 + depth * 2, v + height + depth);
+
+            const uvAttr = box.attributes.uv;
+            const uvRight = [right[3], right[2], right[0], right[1]];
+            const uvLeft = [left[3], left[2], left[0], left[1]];
+            const uvTop = [top[3], top[2], top[0], top[1]];
+            const uvBottom = [bottom[0], bottom[1], bottom[3], bottom[2]];
+            const uvFront = [front[3], front[2], front[0], front[1]];
+            const uvBack = [back[3], back[2], back[0], back[1]];
+
+            const newUVData = [];
+            for (const uvArray of [uvRight, uvLeft, uvTop, uvBottom, uvFront, uvBack]) {
+                for (const uv of uvArray) {
+                    newUVData.push(uv.x, uv.y);
+                }
+            }
+
+            uvAttr.set(new Float32Array(newUVData));
+            uvAttr.needsUpdate = true;
+        }
+
+        function setSkinUVs(box, u, v, width, height, depth) {
+            setUVs(box, u, v, width, height, depth, 64, 64);
+        }
+
+        class BodyPart extends THREE.Group {
+            constructor(innerLayer, outerLayer) {
+                super();
+                this.innerLayer = innerLayer;
+                this.outerLayer = outerLayer;
+                innerLayer.name = "inner";
+                outerLayer.name = "outer";
+                this.add(innerLayer);
+                this.add(outerLayer);
+            }
+        }
+
+        class SkinObject extends THREE.Group {
+            constructor() {
+                super();
+                this.slim = false;
+                this.modelListeners = [];
+
+                this.layer1Material = new THREE.MeshStandardMaterial({ 
+                    side: THREE.FrontSide,
+                    roughness: 1, 
+                    metalness: 0
+                });
+                this.layer2Material = new THREE.MeshStandardMaterial({ 
+                    side: THREE.DoubleSide, 
+                    transparent: true, 
+                    alphaTest: 1e-5,
+                    roughness: 1, 
+                    metalness: 0
+                });
+
+                this.layer1MaterialBiased = this.layer1Material.clone();
+                this.layer1MaterialBiased.polygonOffset = true;
+                this.layer1MaterialBiased.polygonOffsetFactor = 1.0;
+                this.layer1MaterialBiased.polygonOffsetUnits = 1.0;
+
+                this.layer2MaterialBiased = this.layer2Material.clone();
+                this.layer2MaterialBiased.polygonOffset = true;
+                this.layer2MaterialBiased.polygonOffsetFactor = 1.0;
+                this.layer2MaterialBiased.polygonOffsetUnits = 1.0;
+
+                // Cabeza
+                const headBox = new THREE.BoxGeometry(8, 8, 8);
+                setSkinUVs(headBox, 0, 0, 8, 8, 8);
+                const headMesh = new THREE.Mesh(headBox, this.layer1Material);
+                const head2Box = new THREE.BoxGeometry(9, 9, 9);
+                setSkinUVs(head2Box, 32, 0, 8, 8, 8);
+                const head2Mesh = new THREE.Mesh(head2Box, this.layer2Material);
+                
+                this.head = new BodyPart(headMesh, head2Mesh);
+                this.head.name = "head";
+                headMesh.position.y = 4;
+                head2Mesh.position.y = 4;
+                this.head.position.y = 12;
+                this.add(this.head);
+
+                // Cuerpo
+                const bodyBox = new THREE.BoxGeometry(8, 12, 4);
+                setSkinUVs(bodyBox, 16, 16, 8, 12, 4);
+                const bodyMesh = new THREE.Mesh(bodyBox, this.layer1Material);
+                const body2Box = new THREE.BoxGeometry(8.5, 12.5, 4.5);
+                setSkinUVs(body2Box, 16, 32, 8, 12, 4);
+                const body2Mesh = new THREE.Mesh(body2Box, this.layer2Material);
+
+                this.body = new BodyPart(bodyMesh, body2Mesh);
+                this.body.name = "body";
+                this.body.name = "body";
+                this.body.position.y = 6;
+                this.add(this.body);
+
+                // Brazos
+                const rightArmBox = new THREE.BoxGeometry();
+                const rightArmMesh = new THREE.Mesh(rightArmBox, this.layer1MaterialBiased);
+                const rightArm2Box = new THREE.BoxGeometry();
+                const rightArm2Mesh = new THREE.Mesh(rightArm2Box, this.layer2MaterialBiased);
+                
+                this.rightArm = new BodyPart(rightArmMesh, rightArm2Mesh); 
+                this.rightArm.name = "rightArm";
+                
+                this.rightArmPivot = new THREE.Group();
+                this.rightArmPivot.add(rightArmMesh, rightArm2Mesh);
+                this.rightArm.add(this.rightArmPivot);
+                this.add(this.rightArm);
+
+                const leftArmBox = new THREE.BoxGeometry();
+                const leftArmMesh = new THREE.Mesh(leftArmBox, this.layer1MaterialBiased);
+                const leftArm2Box = new THREE.BoxGeometry();
+                const leftArm2Mesh = new THREE.Mesh(leftArm2Box, this.layer2MaterialBiased);
+
+                this.leftArm = new BodyPart(leftArmMesh, leftArm2Mesh);
+                this.leftArm.name = "leftArm";
+                
+                this.leftArmPivot = new THREE.Group();
+                this.leftArmPivot.add(leftArmMesh, leftArm2Mesh);
+                this.leftArm.add(this.leftArmPivot);
+                this.add(this.leftArm);
+
+                const updateArms = () => {
+                    const w = this.slim ? 3 : 4;
+                    rightArmMesh.geometry.dispose();
+                    rightArmMesh.geometry = new THREE.BoxGeometry(w, 12, 4);
+                    setSkinUVs(rightArmMesh.geometry, 40, 16, w, 12, 4);
+                    rightArmMesh.position.y = -4; 
+
+                    rightArm2Mesh.geometry.dispose();
+                    rightArm2Mesh.geometry = new THREE.BoxGeometry(w + 0.5, 12.5, 4.5);
+                    setSkinUVs(rightArm2Mesh.geometry, 40, 32, w, 12, 4);
+                    rightArm2Mesh.position.y = -4; 
+
+                    leftArmMesh.geometry.dispose();
+                    leftArmMesh.geometry = new THREE.BoxGeometry(w, 12, 4);
+                    setSkinUVs(leftArmMesh.geometry, 32, 48, w, 12, 4);
+                    leftArmMesh.position.y = -4; 
+
+                    leftArm2Mesh.geometry.dispose();
+                    leftArm2Mesh.geometry = new THREE.BoxGeometry(w + 0.5, 12.5, 4.5);
+                    setSkinUVs(leftArm2Mesh.geometry, 48, 48, w, 12, 4);
+                    leftArm2Mesh.position.y = -4; 
+
+                    this.rightArm.position.y = 10;
+                    this.rightArm.position.x = -5 - (this.slim ? 0.5 : 1);
+
+                    this.leftArm.position.y = 10;
+                    this.leftArm.position.x = 5 + (this.slim ? 0.5 : 1);
+                };
+                this.modelListeners.push(updateArms);
+
+                // Piernas
+                const rightLegBox = new THREE.BoxGeometry(4, 12, 4);
+                setSkinUVs(rightLegBox, 0, 16, 4, 12, 4);
+                const rightLegMesh = new THREE.Mesh(rightLegBox, this.layer1MaterialBiased);
+                const rightLeg2Box = new THREE.BoxGeometry(4.5, 12.5, 4.5);
+                setSkinUVs(rightLeg2Box, 0, 32, 4, 12, 4);
+                const rightLeg2Mesh = new THREE.Mesh(rightLeg2Box, this.layer2MaterialBiased);
+
+                this.rightLeg = new BodyPart(rightLegMesh, rightLeg2Mesh);
+                this.rightLeg.name = "rightLeg";
+                
+                this.rightLegPivot = new THREE.Group();
+                this.rightLegPivot.add(rightLegMesh, rightLeg2Mesh);
+                this.rightLeg.add(this.rightLegPivot);
+                
+                rightLegMesh.position.y = -6;
+                rightLeg2Mesh.position.y = -6;
+
+                this.rightLeg.position.x = -2;
+                this.rightLeg.position.y = 0;
+                this.add(this.rightLeg);
+
+                const leftLegBox = new THREE.BoxGeometry(4, 12, 4);
+                setSkinUVs(leftLegBox, 16, 48, 4, 12, 4);
+                const leftLegMesh = new THREE.Mesh(leftLegBox, this.layer1MaterialBiased);
+                const leftLeg2Box = new THREE.BoxGeometry(4.5, 12.5, 4.5);
+                setSkinUVs(leftLeg2Box, 0, 48, 4, 12, 4);
+                const leftLeg2Mesh = new THREE.Mesh(leftLeg2Box, this.layer2MaterialBiased);
+
+                this.leftLeg = new BodyPart(leftLegMesh, leftLeg2Mesh);
+                this.leftLeg.name = "leftLeg";
+
+                this.leftLegPivot = new THREE.Group();
+                this.leftLegPivot.add(leftLegMesh, leftLeg2Mesh);
+                this.leftLeg.add(this.leftLegPivot);
+
+                leftLegMesh.position.y = -6;
+                leftLeg2Mesh.position.y = -6;
+
+                this.leftLeg.position.x = 2;
+                this.leftLeg.position.y = 0;
+                this.add(this.leftLeg);
+
+                this.modelType = "default";
+            }
+
+            set map(newMap) {
+                newMap.magFilter = THREE.NearestFilter;
+                newMap.minFilter = THREE.NearestFilter;
+                newMap.encoding = THREE.sRGBEncoding;
+                
+                this.layer1Material.map = newMap;
+                this.layer1MaterialBiased.map = newMap;
+                this.layer2Material.map = newMap;
+                this.layer2MaterialBiased.map = newMap;
+                this.traverse(o => { if(o.material) o.material.needsUpdate = true; });
+            }
+
+            get modelType() { return this.slim ? "slim" : "default"; }
+            set modelType(val) {
+                this.slim = val === "slim";
+                this.modelListeners.forEach(l => l());
+            }
+        }
+
+        let scene, camera, renderer, controls, dirLight;
+        let skinObject;
+        let controlMode = 'rotate';
+        
+        const poseState = {
+            head: { r: {x:0,y:0,z:0}, p: {x:0,y:12,z:0} },
+            body: { r: {x:0,y:0,z:0}, p: {x:0,y:6,z:0} },
+            leftArm: { r: {x:0,y:0,z:0}, p: {x:6,y:10,z:0} },
+            rightArm: { r: {x:0,y:0,z:0}, p: {x:-6,y:10,z:0} },
+            leftLeg: { r: {x:0,y:0,z:0}, p: {x:2,y:0,z:0} },
+            rightLeg: { r: {x:0,y:0,z:0}, p: {x:-2,y:0,z:0} },
+            camera: null,
+            bgColor: null
+        };
+        const initialPose = JSON.parse(JSON.stringify(poseState));
+
+        function initThree() {
+            const canvasContainer = document.getElementById('canvasContainer');
+            const canvas = document.getElementById('skinViewerCanvas');
+            
+            renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, preserveDrawingBuffer: true });
+            const w = canvasContainer.clientWidth;
+            const h = canvasContainer.clientHeight;
+            renderer.setSize(w, h);
+            
+            renderer.shadowMap.enabled = false; 
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+            renderer.outputEncoding = THREE.sRGBEncoding;
+
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(45, w / h, 0.1, 1000);
+            camera.position.set(30, 20, 50);
+
+            controls = new THREE.OrbitControls(camera, canvas);
+            controls.enableDamping = true;
+            controls.target.set(0, 6, 0);
+
+            // Lighting
+            const hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 1.0 ); 
+            scene.add( hemiLight );
+            
+            dirLight = new THREE.DirectionalLight(0xffffff, 0.4);
+            dirLight.position.set(10, 20, 10);
+            dirLight.castShadow = true; 
+            dirLight.shadow.mapSize.width = 2048;
+            dirLight.shadow.mapSize.height = 2048;
+            dirLight.shadow.bias = -0.0001;
+            const d = 20;
+            dirLight.shadow.camera.left = -d;
+            dirLight.shadow.camera.right = d;
+            dirLight.shadow.camera.top = d;
+            dirLight.shadow.camera.bottom = -d;
+            scene.add(dirLight);
+
+            skinObject = new SkinObject();
+            scene.add(skinObject);
+
+            const plane = new THREE.Mesh(new THREE.PlaneGeometry(60,60), new THREE.ShadowMaterial({ opacity:0.15 }));
+            plane.rotation.x = -Math.PI/2;
+            plane.position.y = -12;
+            plane.receiveShadow = true; 
+            scene.add(plane);
+
+            const resizeObserver = new ResizeObserver(() => {
+                 window.requestAnimationFrame(() => {
+                    if (canvasContainer) {
+                        const w = canvasContainer.clientWidth;
+                        const h = canvasContainer.clientHeight;
+                        renderer.setSize(w, h);
+                        camera.aspect = w / h;
+                        camera.updateProjectionMatrix();
+                    }
+                 });
+            });
+            resizeObserver.observe(canvasContainer);
+
+            animate();
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            controls.update();
+            renderer.render(scene, camera);
+        }
+
+        function updatePoseDataField() {
+            if(camera && controls) {
+                poseState.camera = {
+                    pos: camera.position.toArray(),
+                    target: controls.target.toArray()
+                };
+            }
+            const input = document.getElementById('poseInput');
+            if(input && document.activeElement !== input) {
+                input.value = JSON.stringify(poseState);
+            }
+        }
+
+        function downloadImage(url) {
+            const link = document.createElement('a');
+            link.download = `skin-pose-${Date.now()}.png`;
+            link.href = url;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            showToast("Screenshot Saved!");
+        }
+
+        function loadSkinFromUsername(user, onSuccess, onError) {
+            if(!user) return;
+            
+            const usernameRegex = /^[a-zA-Z0-9_]{3,16}$/;
+            if (!usernameRegex.test(user)) {
+                if(onError) onError('invalid');
+                return;
+            }
+
+            const loadTexture = () => {
+                const textureUrl = `https://minotar.net/skin/${user}`;
+                new THREE.TextureLoader().load(
+                    textureUrl,
+                    (tex) => {
+                        skinObject.map = tex;
+                        if(onSuccess) onSuccess();
+                    },
+                    undefined,
+                    () => {
+                        if(onError) onError('api_down');
+                    }
+                );
+            };
+
+            const cacheKey = 'valid_skin_users';
+            let cachedUsers = [];
+            try {
+                const stored = localStorage.getItem(cacheKey);
+                if (stored) cachedUsers = JSON.parse(stored);
+            } catch(e) { console.error(e); }
+
+            if (cachedUsers.includes(user.toLowerCase())) {
+                console.log("User found in local cache:", user);
+                loadTexture();
+                return;
+            }
+
+            fetch(`https://api.minetools.eu/uuid/${user}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === "OK" && data.id) {
+                        if (!cachedUsers.includes(user.toLowerCase())) {
+                            cachedUsers.push(user.toLowerCase());
+                            localStorage.setItem(cacheKey, JSON.stringify(cachedUsers));
+                        }
+                        loadTexture();
+                    } else {
+                        if(onError) onError('invalid');
+                    }
+                })
+                .catch(error => {
+                    console.log("Verification API Error (Minetools):", error);
+                    if(onError) onError('api_down'); 
+                });
+        }
+
+        function loadAction() {
+            const user = document.getElementById('usernameInput').value;
+            const loadBtn = document.getElementById('getSkinBtn');
+            const input = document.getElementById('usernameInput');
+            
+            if(!user) {
+                showErrorPopup();
+                return;
+            }
+
+            loadBtn.disabled = true;
+            input.disabled = true;
+            loadBtn.style.cursor = 'not-allowed';
+            const originalUserVal = input.value;
+            
+            let seconds = 5;
+            const interval = setInterval(() => {
+                seconds--;
+                if(seconds > 0) {
+                    input.value = `${seconds}s left...`;
+                } else {
+                    clearInterval(interval);
+                    input.value = originalUserVal;
+                    loadBtn.disabled = false;
+                    input.disabled = false;
+                    loadBtn.style.cursor = 'pointer';
+                }
+            }, 1000);
+            input.value = `5s left...`; 
+            
+            loadSkinFromUsername(user, 
+                () => {
+                    showToast("Skin Loaded!");
+                }, 
+                (type) => {
+                    if (type === 'api_down') {
+                        showApiErrorPopup();
+                    } else {
+                        showErrorPopup();
+                    }
+                }
+            );
+        }
+
+        function setupUI() {
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    tabButtons.forEach(b => b.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.add('hidden'));
+                    btn.classList.add('active');
+                    document.getElementById(`tab-${btn.dataset.tab}`).classList.remove('hidden');
+                });
+            });
+
+            const groups = {
+                'torso': [
+                    {id: 'head', label: 'HEAD'},
+                    {id: 'body', label: 'BODY'}
+                ],
+                'brazos': [
+                    {id: 'rightArm', label: 'RIGHT ARM'},
+                    {id: 'leftArm', label: 'LEFT ARM'}
+                ],
+                'piernas': [
+                    {id: 'rightLeg', label: 'RIGHT LEG'},
+                    {id: 'leftLeg', label: 'LEFT LEG'}
+                ]
+            };
+
+            for (const [tabKey, parts] of Object.entries(groups)) {
+                const container = document.getElementById(`tab-${tabKey}`);
+                
+                parts.forEach(p => {
+                    const wrapper = document.createElement('div');
+                    wrapper.className = "mb-2 pb-2 border-b border-[#888] last:border-0"; 
+                    
+                    const label = document.createElement('div');
+                    label.className = "text-xs font-bold text-gray-500 mb-1 flex items-center gap-1 uppercase";
+                    label.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-pink-500 inline-block"></span> ${p.label}`;
+                    wrapper.appendChild(label);
+
+                    ['x', 'y', 'z'].forEach(axis => {
+                        const row = document.createElement('div');
+                        row.className = "slider-group";
+                        const axisColors = {x: 'text-red-500', y: 'text-green-500', z: 'text-blue-500'};
+                        
+                        row.innerHTML = `
+                            <span class="font-bold font-mono w-4 ${axisColors[axis]}">${axis.toUpperCase()}</span>
+                            <input type="range" data-part="${p.id}" data-axis="${axis}">
+                            <input type="number" data-part="${p.id}" data-axis="${axis}" class="input-custom" style="padding:0; width:40px; height:20px; font-size:10px;">
+                        `;
+                        wrapper.appendChild(row);
+                    });
+                    container.appendChild(wrapper);
+                });
+            }
+
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.addEventListener('input', (e) => {
+                if(e.target.tagName !== 'INPUT') return;
+                
+                if (e.target.dataset.part) {
+                    const part = e.target.dataset.part;
+                    const axis = e.target.dataset.axis;
+                    const val = parseFloat(e.target.value);
+                    
+                    const parent = e.target.parentElement;
+                    const range = parent.querySelector('input[type=range]');
+                    const num = parent.querySelector('input[type=number]');
+                    if(range) range.value = val;
+                    if(num) num.value = val;
+
+                    if(controlMode === 'rotate') poseState[part].r[axis] = val;
+                    else poseState[part].p[axis] = val;
+
+                    updateSkinPose();
+                    updatePoseDataField(); 
+                }
+            });
+
+            controls.addEventListener('end', updatePoseDataField);
+
+            const btnRot = document.getElementById('modeRotate');
+            const btnPos = document.getElementById('modePosition');
+            const setMode = (m) => {
+                controlMode = m;
+                updateInputs();
+                if(m === 'rotate') {
+                    // Active State (Pink)
+                    btnRot.style.backgroundColor = "var(--btn-bg)";
+                    btnRot.style.color = "var(--btn-text)";
+                    btnRot.style.borderColor = "var(--btn-border)";
+                    
+                    // Inactive State (Gray)
+                    btnPos.style.backgroundColor = "#ccc";
+                    btnPos.style.color = "#000";
+                    btnPos.style.borderColor = "#888";
+                } else {
+                    btnPos.style.backgroundColor = "var(--btn-bg)";
+                    btnPos.style.color = "var(--btn-text)";
+                    btnPos.style.borderColor = "var(--btn-border)";
+                    
+                    btnRot.style.backgroundColor = "#ccc";
+                    btnRot.style.color = "#000";
+                    btnRot.style.borderColor = "#888";
+                }
+            };
+            btnRot.onclick = () => setMode('rotate');
+            btnPos.onclick = () => setMode('position');
+            setMode('rotate');
+
+            // Load Button
+            document.getElementById('getSkinBtn').onclick = loadAction;
+            
+            // Enter Key
+            document.getElementById('usernameInput').addEventListener("keyup", function(event) {
+                if (event.key === "Enter") {
+                    loadAction();
+                }
+            });
+
+            document.getElementById('skinUpload').onchange = (e) => {
+                if(e.target.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = (ev) => {
+                        const img = new Image();
+                        img.onload = () => {
+                            const tex = new THREE.Texture(img);
+                            tex.needsUpdate = true;
+                            skinObject.map = tex;
+                        };
+                        img.src = ev.target.result;
+                    };
+                    reader.readAsDataURL(e.target.files[0]);
+                }
+            };
+
+            document.getElementById('slimToggle').onchange = (e) => {
+                skinObject.modelType = e.target.checked ? "slim" : "default";
+            };
+            document.getElementById('shadowToggle').onchange = (e) => {
+                renderer.shadowMap.enabled = e.target.checked;
+                skinObject.traverse(o => { if(o.isMesh) { o.castShadow = e.target.checked; o.receiveShadow = e.target.checked; }});
+                skinObject.traverse(o => { if(o.material) o.material.needsUpdate = true; });
+            };
+            
+            document.getElementById('resetPoseBtn').onclick = () => {
+                for(let k in initialPose) {
+                   if (k !== 'camera' && k !== 'bgColor') poseState[k] = JSON.parse(JSON.stringify(initialPose[k]));
+                }
+                updateSkinPose();
+                updateInputs();
+                updatePoseDataField();
+                showToast("Pose Reset");
+            };
+
+            document.getElementById('takeScreenshotBtn').onclick = () => {
+                const originalSize = new THREE.Vector2();
+                renderer.getSize(originalSize);
+                
+                const highResW = 4096;
+                const highResH = 4096;
+                
+                renderer.setSize(highResW, highResH);
+                camera.aspect = 1; 
+                camera.updateProjectionMatrix();
+                renderer.render(scene, camera);
+                
+                const watermark = document.getElementById('watermarkToggle').checked;
+
+                if (watermark) {
+                    const canvas2d = document.createElement('canvas');
+                    const ctx = canvas2d.getContext('2d');
+                    const bannerHeight = Math.round(highResW * 0.04); 
+                    
+                    canvas2d.width = highResW;
+                    canvas2d.height = highResH + bannerHeight;
+
+                    ctx.drawImage(renderer.domElement, 0, 0);
+
+                    ctx.fillStyle = "#111111";
+                    ctx.fillRect(0, highResH, highResW, bannerHeight);
+
+                    const fontSize = Math.round(bannerHeight * 0.4); 
+                    ctx.font = `bold ${fontSize}px "MinecraftRegular", sans-serif`;
+                    ctx.fillStyle = "#ffffff";
+                    ctx.textAlign = "center";
+                    ctx.textBaseline = "middle";
+                    ctx.fillText("Downloaded from https://alonsoaliaga.com/skin-poser", highResW / 2, highResH + bannerHeight / 2);
+
+                    downloadImage(canvas2d.toDataURL("image/png"));
+                } else {
+                    downloadImage(renderer.domElement.toDataURL("image/png"));
+                }
+                
+                renderer.setSize(originalSize.x, originalSize.y);
+                camera.aspect = originalSize.x / originalSize.y;
+                camera.updateProjectionMatrix();
+                renderer.render(scene, camera);
+            };
+
+            document.getElementById('copyPoseBtn').onclick = () => {
+                const field = document.getElementById('poseInput');
+                field.select();
+                navigator.clipboard.writeText(field.value).then(() => showToast("JSON Copied!"));
+            };
+
+            document.getElementById('loadPoseBtn').onclick = () => {
+                const str = document.getElementById('poseInput').value;
+                if(str) {
+                    try {
+                        const loaded = JSON.parse(str); 
+                        if(loaded.head && loaded.body) {
+                            for(let k in loaded) {
+                                if(k !== 'camera') poseState[k] = loaded[k];
+                            }
+                            
+                            if(loaded.camera) {
+                                camera.position.fromArray(loaded.camera.pos);
+                                controls.target.fromArray(loaded.camera.target);
+                                controls.update();
+                            }
+                            
+                            if(loaded.bgColor) {
+                                poseState.bgColor = loaded.bgColor;
+                                canvasContainer.style.background = loaded.bgColor;
+                                bgColorPicker.value = loaded.bgColor;
+                            } else {
+                                poseState.bgColor = null;
+                                canvasContainer.style.background = '';
+                            }
+
+                            updateSkinPose();
+                            updateInputs();
+                            showToast("Pose & View Loaded!");
+                        } else {
+                            showToast("Invalid JSON format", true);
+                        }
+                    } catch(e) {
+                        showToast("Invalid JSON String", true);
+                    }
+                }
+            };
+            
+            updatePoseDataField();
+        }
+
+        function updateInputs() {
+            document.querySelectorAll('.sidebar input[type=range]').forEach(input => {
+                const part = input.dataset.part;
+                const axis = input.dataset.axis;
+                if(!part) return;
+
+                const isRot = controlMode === 'rotate';
+                const val = isRot ? poseState[part].r[axis] : poseState[part].p[axis];
+                
+                input.min = isRot ? -180 : -50;
+                input.max = isRot ? 180 : 50;
+                input.step = isRot ? 1 : 0.5;
+                input.value = val;
+                input.nextElementSibling.value = val;
+                
+                const parent = input.parentElement;
+                const num = parent.querySelector('input[type=number]');
+                if(num) num.value = val;
+            });
+        }
+
+        function updateSkinPose() {
+            const rad = Math.PI / 180;
+            
+            ['head', 'body'].forEach(name => {
+                const obj = skinObject[name];
+                const s = poseState[name];
+                if(obj) {
+                    obj.rotation.set(s.r.x * rad, s.r.y * rad, s.r.z * rad);
+                    obj.position.set(s.p.x, s.p.y, s.p.z);
+                }
+            });
+            
+            ['rightArm', 'leftArm', 'rightLeg', 'leftLeg'].forEach(name => {
+                const wrapper = skinObject[name];
+                const s = poseState[name];
+                if(wrapper) {
+                    wrapper.position.set(s.p.x, s.p.y, s.p.z);
+                    let pivot = skinObject[name + "Pivot"];
+                    if(pivot) {
+                        pivot.rotation.set(s.r.x * rad, s.r.y * rad, s.r.z * rad);
+                    }
+                }
+            });
+        }
+    </script>
+    <script src="./resources.js"></script>
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5185973148525065"
+        crossorigin="anonymous"></script>
+</body>
+</html>
